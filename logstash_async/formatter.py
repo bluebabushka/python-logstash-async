@@ -244,6 +244,7 @@ class DjangoLogstashFormatter(LogstashFormatter):
             extra_fields['req_user'] = str(request_user)
             extra_fields['req_method'] = request.META.get('REQUEST_METHOD', '')
             extra_fields['req_referer'] = request.META.get('HTTP_REFERER', '')
+            extra_fields['request_id'] = request.META.get('HTTP_X_REQUEST_ID', '<none>')
 
             forwarded_proto = request.META.get('HTTP_X_FORWARDED_PROTO', None)
             if forwarded_proto is not None:
