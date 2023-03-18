@@ -228,6 +228,9 @@ class DjangoLogstashFormatter(LogstashFormatter):
 
         if hasattr(record, 'status_code'):
             extra_fields['status_code'] = record.status_code
+            
+        for key, value in record.__dict__.items():
+            print(f'{key}: {value}')    
 
         # Django's runserver command passes socketobject and WSGIRequest instances as "request".
         # Hence the check for the META attribute.
